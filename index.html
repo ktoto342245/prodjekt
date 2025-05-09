@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кібербезпека: Захист у цифровій ері</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #e6f0ff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark {
+            background: #1a1a2e;
+            color: #e0e0e0;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        header {
+            background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b') center/cover fixed;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(59, 130, 246, 0.8));
+            z-index: 1;
+        }
+
+        header * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 2.2em;
+            font-weight: 800;
+            padding: 15px;
+            color: #bfdbfe;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background: #1e40af;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .theme-toggle {
+            position: absolute;
+            right: 20px;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            animation: fadeIn 1.5s ease-in;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #1e40af;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+            transform: translateY(-5px);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 1100px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        body.dark .glass {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            border-left: 6px solid #3b82f6;
+            padding-left: 15px;
+            animation: slideIn 1s ease-in;
+        }
+
+        body.dark h2 {
+            color: #bfdbfe;
+        }
+
+        .content-img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin: 20px 0;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .content-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        ul li, ol li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .stats div {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            width: 30%;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        .stats div:hover {
+            transform: translateY(-10px);
+        }
+
+        .stats i {
+            font-size: 2.5em;
+            color: #1e40af;
+            margin-bottom: 15px;
+        }
+
+        .methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .method-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            width: 23%;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .method-card i {
+            font-size: 2em;
+            color: #1e40af;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        footer.glass {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer i {
+            color: #ff6b6b;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .stats div, .method-card {
+                width: 100%;
+            }
+            .theme-toggle {
+                right: 10px;
+                top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <header>
+        <div class="logo">КіберЩит</div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="tab-link active" onclick="openTab('home')">Головна</a></li>
+                <li><a href="#research" class="tab-link" onclick="openTab('research')">Дослідження</a></li>
+                <li><a href="#conclusions" class="tab-link" onclick="openTab('conclusions')">Висновки</a></li>
+                <li><a href="#thanks" class="tab-link" onclick="openTab('thanks')">Подяка</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </nav>
+        <div class="hero">
+            <h1>Кібербезпека: Захист у цифровій ері</h1>
+            <p>Навчальний проєкт про безпеку в Інтернеті</p>
+            <a href="#research" class="btn" onclick="openTab('research')">Дізнайтесь більше</a>
+        </div>
+    </header>
+
+    <!-- Головна -->
+    <section id="home" class="tab-content glass active">
+        <h2>Про нас</h2>
+        <p>Ми — команда учнів 10-А класу: Іван Іванов, Марія Петренко, Олег Сидоренко. Наш проєкт присвячений кібербезпеці — ключовій темі сучасності. Ми досліджуємо, як захистити дані, мережі та пристрої від кібератак, і ділимося знаннями з вами.</p>
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="Команда" class="content-img">
+
+        <h2>Чому кібербезпека важлива?</h2>
+        <p>У 2025 році кібератаки стають дедалі складнішими. Щодня фіксують 3.4 мільйони атак, від фішингу до атак на IoT. Кібербезпека захищає наші дані, фінанси, приватність і навіть національну безпеку. Наш проєкт розкриває основи захисту, сучасні виклики та практичні поради.</p>
+        <div class="stats">
+            <div><i class="fas fa-shield-alt"></i><p>3.4 млн атак щодня</p></div>
+            <div><i class="fas fa-lock"></i><p>68% компаній зазнали атак</p></div>
+            <div><i class="fas fa-user-shield"></i><p>95% атак через помилки</p></div>
+        </div>
+    </section>
+
+    <!-- Дослідження -->
+    <section id="research" class="tab-content glass">
+        <h2>Що таке кібербезпека?</h2>
+        <p>Кібербезпека — це сукупність технологій, процесів і практик, спрямованих на захист комп’ютерів, мереж, програм і даних від несанкціонованого доступу, кібератак чи пошкоджень. Вона охоплює захист від фішингу, вірусів, ransomware, DDoS-атак, атак на хмарні сервіси та пристрої Інтернету речей (IoT).</p>
+        <p>Основна мета кібербезпеки — забезпечити конфіденційність, цілісність і доступність даних (принцип CIA: Confidentiality, Integrity, Availability). Наприклад, шифрування захищає конфіденційність, а резервне копіювання — доступність.</p>
+        <img src="https://images.unsplash.com/photo-1563986768494-4dee2763c0c2" alt="Кібербезпека" class="content-img">
+
+        <h2>Типи кібератак</h2>
+        <p>Кіберзлочинці використовують різні методи, щоб отримати доступ до даних або завдати шкоди:</p>
+        <ul>
+            <li><i class="fas fa-fish"></i> <strong>Фішинг</strong>: Обманні листи чи повідомлення, які видають себе за надійні джерела, щоб вкрасти паролі чи дані.</li>
+            <li><i class="fas fa-bug"></i> <strong>Ransomware</strong>: Шкідливе ПЗ, яке блокує доступ до даних і вимагає викуп.</li>
+            <li><i class="fas fa-skull-crossbones"></i> <strong>DDoS-атаки</strong>: Перевантаження серверів запитами, щоб зробити сайт недоступним.</li>
+            <li><i class="fas fa-cloud"></i> <strong>Атаки на IoT</strong>: Злам смарт-пристроїв (камер, термостатів) через слабкий захист.</li>
+            <li><i class="fas fa-user-secret"></i> <strong>Соціальна інженерія</strong>: Маніпуляція людьми для отримання конфіденційної інформації.</li>
+        </ul>
+
+        <h2>Методи захисту</h2>
+        <p>Щоб протистояти кібератакам, використовують різні технології та практики:</p>
+        <div class="methods">
+            <div class="method-card">
+                <i class="fas fa-key"></i>
+                <h3>Шифрування</h3>
+                <p>Перетворює дані в нечитаб                <p>Використовує алгоритми, як AES-256 чи RSA, для захисту інформації.</p>
+            </div>
+            <div class="method-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Антивіруси</h3>
+                <p>Виявляють і видаляють віруси, трояни, шпигунське ПЗ (Kaspersky, Norton).</p>
+            </div>
+            <div class="method-card">
+                <i class="fas fa-fire"></i>
+                <h3>Брандмауери</h3>
+                <p>Фільтрують мережевий трафік, блокуючи підозрілі запити.</p>
+            </div>
+            <div class="method-card">
+                <i class="fas fa-user-lock"></i>
+                <h3>2FA</h3>
+                <p>Додає другий рівень захисту (пароль + код із телефону).</p>
+            </div>
+        </div>
+
+        <h2>Сучасні виклики</h2>
+        <p>Нові технології створюють нові загрози, які ускладнюють захист:</p>
+        <ul>
+            <li><strong>Штучний інтелект (ШІ)</strong>: Кіберзлочинці використовують ШІ для створення deepfake-фішингу, автоматизованих атак чи аналізу вразливостей.</li>
+            <li><strong>Квантові комп’ютери</strong>: У майбутньому можуть зламати сучасні алгоритми шифрування, як RSA чи ECC.</li>
+            <li><strong>Інтернет речей (IoT)</strong>: Мільярди пристроїв (смарт-годинники, камери) мають слабкий захист і стають мішенями.</li>
+            <li><strong>Хмарні сервіси</strong>: Неправильна конфігурація хмар (AWS, Azure) призводить до витоків даних.</li>
+            <li><strong>Гібридні атаки</strong>: Комбінація кібератак із фізичними діями (наприклад, атаки на енергомережі).</li>
+        </ul>
+        <img src="https://images.unsplash.com/photo-1516321310766-66f0f9b48f87" alt="IoT" class="content-img">
+
+        <h2>Практичні поради для користувачів</h2>
+        <p>Кожен може підвищити свою безпеку, дотримуючись простих правил:</p>
+        <ol>
+            <li>Створюйте складні паролі (12+ символів, унікальні для кожного сайту).</li>
+            <li>Оновлюйте операційну систему, браузери та антивіруси щомісяця.</li>
+            <li>Перевіряйте URL сайтів перед введенням даних (наприклад, "g00gle.com" — це фішинг).</li>
+            <li>Використовуйте VPN у громадських Wi-Fi для шифрування трафіку.</li>
+            <li>Увімкніть двофакторну автентифікацію (2FA) для email, соцмереж і банківських акаунтів.</li>
+            <li>Не відкривайте вкладення чи посилання в підозрілих листах.</li>
+            <li>Регулярно створюйте резервні копії важливих даних.</li>
+        </ol>
+
+        <h2>Відео: Як працює шифрування</h2>
+        <p>Це коротке відео пояснює, як шифрування захищає ваші дані від зловмисників.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/AQDCe585Lnc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+
+    <!-- Висновки -->
+    <section id="conclusions" class="tab-content glass">
+        <h2>Висновки</h2>
+        <p>Кібербезпека — це не просто технічна дисципліна, а необхідна навичка для кожного в цифрову епоху. У 2025 році, коли технології проникають у всі сфери життя — від освіти до медицини, — захист даних стає пріоритетом. Наше дослідження показало, що кібербезпека потрібна не лише IT-фахівцям, а й звичайним користувачам, бізнесу та державним установам.</p>
+        <p>Прості дії, як створення складних паролів, використання 2FA чи оновлення ПЗ, можуть запобігти більшості атак. Водночас нові виклики, такі як ШІ, квантові комп’ютери та IoT, вимагають інноваційних рішень, як-от постквантове шифрування чи ШІ для виявлення загроз.</p>
+        <p>Майбутнє кібербезпеки залежить від освіти та співпраці. Кожен користувач має бути відповідальним за свою безпеку, а компанії та уряди — інвестувати в захист інфраструктури. Ми переконані, що знання, отримані в цьому проєкті, допоможуть нам і нашим однокласникам бути готовими до викликів цифрового світу.</p>
+        <p>Кібербезпека — це не одноразова дія, а постійний процес. Залишайтеся пильними, і ваш цифровий світ буде безпечним!</p>
+        <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893" alt="Графік" class="content-img">
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: '#bfdbfe' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#bfdbfe', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 3, direction: 'none', random: true }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+                modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+            }
+        });
+
+        // Перемикання вкладок
+        function openTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const links = document.querySelectorAll('.tab-link');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            links.forEach(link => link.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`a[href="#${tabName}"]`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Анімація появи секцій
+        const sections = document.querySelectorAll('.glass');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.classList.add('hidden');
+            observer.observe(section);
+        });
+
+        // Темна/світла тема
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            themeToggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Додатковий стиль для анімації
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .hidden { opacity: 0; transform: translateY(50px); transition: all 0.8s; }
+            .visible { opacity: 1; transform: translateY(0); }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
